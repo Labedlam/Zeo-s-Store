@@ -1,0 +1,14 @@
+{
+  "appname": "Zeo's Store",
+  "scope": "FullAccess",
+  "clientid": "FD789366-768C-4131-99A4-B452231ABA48",
+  "buyerid": "Zeo",
+  "environment": "prod",
+  "anonymous": false,
+  "base": {
+    "left":true,
+    "right":false,
+    "top":true,
+    "bottom":false
+  }
+}

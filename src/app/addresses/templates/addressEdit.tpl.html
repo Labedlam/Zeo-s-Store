@@ -1,0 +1,75 @@
+<h3 class="page-header">
+	<b>Edit Address:</b> {{addressEdit.addressName}}
+</h3>
+<form name="AddressEditForm" ng-submit="addressEdit.Submit()" novalidate>
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label for="addressIDInput">Address ID</label>
+			<input id="addressIDInput" type="text" class="form-control" pattern="([A-Za-z0-9\-\_]+)" pattern-err-type="ID_Name" ng-model="addressEdit.address.ID"/>
+		</div>
+		<div class="col-sm-6 form-group">
+			<label for="addressNameInput">Address Name</label>
+			<input id="addressNameInput" type="text" class="form-control"  ng-model="addressEdit.address.AddressName" required/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 form-group">
+			<label for="addressCompanyNameInput">Company Name</label>
+			<input id="addressCompanyNameInput" type="text" class="form-control" ng-model="addressEdit.address.CompanyName"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label for="addressFirstNameInput">First Name</label>
+			<input id="addressFirstNameInput" type="text" class="form-control" ng-model="addressEdit.address.FirstName"/>
+		</div>
+		<div class="col-sm-6 form-group">
+			<label for="addressLastNameInput">Last Name</label>
+			<input id="addressLastNameInput" type="text" class="form-control" ng-model="addressEdit.address.LastName"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label for="addressStreet1Input">Street 1</label>
+			<input id="addressStreet1Input" type="text" class="form-control" ng-model="addressEdit.address.Street1" required/>
+		</div>
+		<div class="col-sm-6 form-group">
+			<label for="addressStreet2Input">Street 2</label>
+			<input id="addressStreet2Input" type="text" class="form-control" ng-model="addressEdit.address.Street2"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label for="addressCityInput">City</label>
+			<input id="addressCityInput" type="text" class="form-control" ng-model="addressEdit.address.City" required/>
+		</div>
+		<div class="col-sm-3 form-group" ng-show="addressEdit.address.Country == 'US' || addressEdit.address.Country == 'CA'">
+			<label for="addressStateInput">State</label>
+			<select id="addressStateInput" class="form-control" ng-options="state.value as state.label for state in addressEdit.states" ng-model="addressEdit.address.State" required/>
+		</div>
+		<div class="col-sm-3 form-group"  ng-hide="addressEdit.address.Country == 'US' || addressEdit.address.Country == 'CA'">
+			<label for="addressStateInput">State</label>
+			<input id="addressStateInput" class="form-control" ng-model="addressEdit.address.State" required/>
+		</div>
+		<div class="col-sm-3 form-group">
+			<label for="addressZipInput">Zip</label>
+			<input id="addressZipInput" type="text" class="form-control" ng-model="addressEdit.address.Zip" required/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label for="addressCountryInput">Country</label>
+			<select id="addressCountryInput" class="form-control" ng-options="country.value as country.label for country in addressEdit.countries" ng-model="addressEdit.address.Country" required/>
+		</div>
+		<div class="col-sm-6 form-group">
+			<label for="addressPhoneInput">Phone Number</label>
+			<input id="addressPhoneInput" type="text" class="form-control" ng-model="addressEdit.address.Phone"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary" ng-disabled="AddressEditForm.$invalid">Save</button>
+		<button type="button" class="btn btn-default" ui-sref="^">Cancel</button>
+		<button type="button" class="btn btn-default" ng-click="addressEdit.Delete()"><i class="fa fa-trash text-danger"></i></button>
+	</div>
+	<!--TODO: The Address Edit state should also include Address Assignments-->
+</form>
